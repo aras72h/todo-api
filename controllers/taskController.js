@@ -5,8 +5,6 @@ const createTask = async (req, res) => {
     try {
         const { title } = req.body;
         const { listId } = req.params;
-        console.log(`title: ${title}`);
-        console.log(`List ID: ${listId}`);
         const task = await Task.create({ title, list_id: listId });
         res.status(201).json(task);
     } catch (error) {
