@@ -33,7 +33,7 @@ const login = async (req, res) => {
         // Check if user exists
         const user = await User.findOne({ where: { email } });
         if (!user) {
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(401).json({ error: 'Invalid credentials' });
         }
 
         // Verify password
@@ -43,7 +43,8 @@ const login = async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const tokenPayload = { id: user.id, email: user.email };
+        const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // Return token
         res.json({ token });
@@ -52,6 +53,7 @@ const login = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
 
 const logout = async (req, res) => {
     // Additional logic based on your authentication strategy (e.g., JWT, session)
