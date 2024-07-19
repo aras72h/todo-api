@@ -16,7 +16,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 const authorizeUser = (req, res, next) => {
-    const userId = req.user.userId; // Extracted from the token in authenticateToken
+    const userId = req.user.id; // Extracted from the token in authenticateToken
     const requestedUserId = parseInt(req.params.id, 10); // ID from the route parameter
 
     if (userId !== requestedUserId) {
