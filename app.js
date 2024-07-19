@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const listRoutes = require('./routes/listRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 const { handleErrors } = require('./middlewares/errorMiddleware');
 
 dotenv.config();
@@ -13,6 +15,8 @@ app.use(express.json());
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/lists', listRoutes);
+app.use('/lists', taskRoutes);
 
 // Error handling middleware
 app.use('/', handleErrors);
