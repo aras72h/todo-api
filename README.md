@@ -133,25 +133,40 @@ Defines API routes and associates them with controllers.
 
 - **POST `/lists/:listId/tasks`**
   - **Description**: Add a new task to a to-do list.
-  - **Request Body**: `{ title: string, description: string }`
-  - **Response**: `{ id: number, title: string, description: string, listId: number }`
+  - **Request Body**: `{ title: string }`
+  - **Response**: `{ id: number, title: string, listId: number }`
 
 - **GET `/lists/:listId/tasks`**
   - **Description**: Get all tasks for a specific to-do list.
-  - **Response**: `[ { id: number, title: string, description: string, listId: number } ]`
+  - **Response**: `[ { id: number, title: string, listId: number } ]`
 
 - **GET `/lists/:listId/tasks/:taskId`**
   - **Description**: Get a specific task by ID.
-  - **Response**: `{ id: number, title: string, description: string, listId: number }`
+  - **Response**: `{ id: number, title: string, listId: number }`
 
 - **PUT `/lists/:listId/tasks/:taskId`**
   - **Description**: Update a specific task by ID.
-  - **Request Body**: `{ title: string, description: string }`
-  - **Response**: `{ id: number, title: string, description: string, listId: number }`
+  - **Request Body**: `{ title: string }`
+  - **Response**: `{ id: number, title: string, listId: number }`
 
 - **DELETE `/lists/:listId/tasks/:taskId`**
   - **Description**: Delete a specific task by ID.
   - **Response**: `{ message: "Task deleted" }`
+
+  ### Users
+
+- **GET `/users/:id`**
+  - **Description**: Retrieve a user by ID.
+  - **Response**: `{ id: number, username: string, email: string }`
+
+- **PUT `/users/:id`**
+  - **Description**: Update user information by ID.
+  - **Request Body**: `{ username: string, email: string, password: string }`
+  - **Response**: `{ id: number, username: string, email: string }`
+
+- **DELETE `/users/:id`**
+  - **Description**: Delete a user by ID.
+  - **Response**: `{ message: "User deleted" }`
 
 ## Configuration
 
