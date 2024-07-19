@@ -3,9 +3,11 @@ const Task = require('../models/Task');
 // Create a new task in a specific list
 const createTask = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { title } = req.body;
         const { listId } = req.params;
-        const task = await Task.create({ name, list_id: listId });
+        console.log(`title: ${title}`);
+        console.log(`List ID: ${listId}`);
+        const task = await Task.create({ title, list_id: listId });
         res.status(201).json(task);
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
@@ -45,8 +47,8 @@ const updateTask = async (req, res) => {
         if (!task) {
             return res.status(404).json({ error: 'Task not found' });
         }
-        const { name, completed } = req.body;
-        task.name = name;
+        const { title, completed } = req.body;
+        task.title = title;
         task.completed = completed;
         await task.save();
         res.json(task);
