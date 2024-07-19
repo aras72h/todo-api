@@ -155,7 +155,19 @@ Defines API routes and associates them with controllers.
 
 ## Configuration
 
-- **`.env`**: Contains environment variables such as `DATABASE_URL`, `JWT_SECRET`, etc.
+To configure the application, create a `.env` file in the root directory of the project with the following environment variables:
+
+```
+# Database configuration
+DB_NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_HOST=your_database_host
+DB_PORT=5432
+
+# JWT secret for token signing
+JWT_SECRET=your_jwt_secret
+```
 
 ## Setup and Installation
 
